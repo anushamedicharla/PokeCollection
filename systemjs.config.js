@@ -5,13 +5,15 @@
     'app': 'app',
     '@angular': 'node_modules/@angular',
     'rxjs': 'node_modules/rxjs',
-    'angular-in-memory-web-api':'node_modules/angular-in-memory-web-api/bundles/in-memory-web-api.umd.js'
+    'angular-in-memory-web-api':'node_modules/angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
+    'ng2-bootstrap':'node_modules/ng2-bootstrap'
   };
 
   // packages tells the System loader how to load when no filename and/or no extension
   var packages = {
     'app': { main: 'main.js',  defaultExtension: 'js' },
-    'rxjs': { defaultExtension: 'js' }
+    'rxjs': { defaultExtension: 'js' },
+    'ng2-bootstrap': { format:'cjs', main:'bundles/ngx-bootstrap.umd.js', defaultExtension: 'js' }
   };
 
   var ngPackageNames = [

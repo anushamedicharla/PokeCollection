@@ -37,10 +37,11 @@
                             <span class="card-link text-warning">
                                <i class="fa fa-info-circle fa-2x"></i></span>
                             <span class="card-link text-danger"
-                            (click)="deletePokemon(poke)"
-                                       tooltip="Careful, this will delete Pokemon!"
-                                       placement="right">
-                                       <i class="fa fa-trash-o fa-2x"></i></span>
+                                  (click)="deletePokemon(poke)"
+                                  tooltip="Careful, this will delete Pokemon!"
+                                  placement="right">
+                                      <i class="fa fa-trash-o fa-2x"></i>
+                            </span>
                   </div>
               </div>
           </div>
@@ -48,3 +49,141 @@
     </div>
   </div>
   <br>
+
+  <!-- Modal -->
+<div bsModal #childModal="bs-modal"
+class="modal fade"
+tabindex="-1"
+role="dialog"
+aria-labelledby="mySmallModalLabel"
+aria-hidden="true">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+    <div class="modal-header">
+       <h3 class="modal-title pull-left">Name</h3>
+        <button type="button"
+                     class="close"
+                     aria-label="Close"
+                     class="close pull-right"
+                     (click)="hideChildModal()">
+  <span aria-hidden="true">&times;</span>
+</button>
+</div>
+ <div class="modal-body">
+   <div class="container col-md-12">
+    <div class="row">
+
+      <!-- Pokemon Image -->
+      <div class="col-md-2">
+        <img class="rounded float-left img-thumbnail">
+      </div>
+
+          <!-- Pokemon Type -->
+         <div class="col-md-5">
+            <ul class="list-group">
+            <li class="list-group-item">
+              <strong>Height</strong>
+               <div class="d-flex justify-content-end">
+                <div class="mr-auto p-2">&nbsp; Height</div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <strong>Weight</strong>
+               <div class="d-flex justify-content-end">
+                <div class="mr-auto p-2">&nbsp; Weight</div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <strong>Type</strong>
+              <ul>
+                <li>
+                <span class="align-self-end">Type</span>
+                </li>
+              </ul>
+            </li>
+            <li class="list-group-item">
+              <strong>Abilities</strong>
+              <ul>
+                <li>
+                <span class="align-self-end">Abilities</span>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Pokemon Stats -->
+        <div class="col-md-5">
+          <ul class="list-group">
+            <li class="list-group-item">
+              <strong>HP</strong>
+              <div class="d-flex justify-content-end">
+                <div class="mr-auto p-2 float-right">
+                  <span class="badge badge-default">HP
+                </span>
+               </div>
+              </div>
+            </li>
+          <li class="list-group-item">
+            <strong>Attack</strong>
+              <div class="d-flex justify-content-end">
+                <div class="mr-auto p-2">
+                  <span class="badge badge-danger">Attack
+                </span>
+               </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <strong>Defense</strong>
+                <div class="d-flex justify-content-end">
+                <div class="mr-auto p-2">
+                  <span class="badge badge-warning">Defense
+                </span>
+               </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <strong>Special Attack</strong>
+                <div class="d-flex justify-content-end">
+                <div class="mr-auto p-2">
+                  <span class="badge badge-info">Attack
+                </span>
+               </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <strong>Special Defense</strong>
+                <div class="d-flex justify-content-end">
+                <div class="mr-auto p-2">
+                  <span class="badge badge-success">Defense
+                </span>
+               </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <strong>Speed</strong>
+                <div class="d-flex justify-content-end">
+                <div class="mr-auto p-2">
+                  <span class="badge badge-primary">Speed
+                </span>
+               </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <strong>Total</strong>
+                <div class="d-flex justify-content-end">
+                <div class="mr-auto p-2">
+                  <span class="badge badge-default">Total
+                </span>
+               </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        </div>  <!-- End Row -->
+      </div>   <!-- End col-md-12  -->
+    </div>    <!-- End modal body -->
+</div>       <!-- End modal content -->
+</div>
+</div>
