@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { Pokemon } from '../shared/pokemon';
 import { PokemonService } from '../shared/pokemon.service';
 import { ModalDirective } from 'ng2-bootstrap';
+import { PokemonModalComponent } from './pokemon-modal.component';
 
 @Component({
   selector: "pk-list",
@@ -23,21 +24,17 @@ import { ModalDirective } from 'ng2-bootstrap';
 export class ListPokemonsComponent implements OnInit {
   pokemon: Pokemon[];
   errorMessage: string;
-  @ViewChild('childModal') public childModal: ModalDirective;
+  @ViewChild('childModal') public childModal: PokemonModalComponent;
 
   // Modal Properties
-  selectedPokemonLoaded: boolean = false;
   pokeDetails: Pokemon;
   
-  constructor(private _pokeService: PokemonService){}
+  constructor(private _pokeService: PokemonService,
+              private _viewContainerRef: ViewContainerRef){}
 
   ngOnInit() {
     //Get all pokemons
     this.getPokemons();
-  }
-  
-  public hideChildModal() {
-    this.childModal.hide();
   }
 
   getPokemons(){
@@ -74,7 +71,6 @@ export class ListPokemonsComponent implements OnInit {
         .subscribe(
           (pokemon: Pokemon) => {
             this.pokeDetails = pokemon;
-            this.selectedPokemonLoaded = true;
             this.childModal.show();
           },
           error => this.errorMessage = <any> error
