@@ -34,7 +34,8 @@
                       <button type="button" class="btn btn-secondary"
                       *ngIf="poke.type.indexOf('Psychic') !== -1">Psychic</button>
                           <span class="card-link" hidden><i class="fa fa-pencil"></i></span>
-                            <span class="card-link text-warning">
+                            <span class="card-link text-warning"
+                                  (click)="viewSinglePokemon(poke.id)">
                                <i class="fa fa-info-circle fa-2x"></i></span>
                             <span class="card-link text-danger"
                                   (click)="deletePokemon(poke)"
@@ -57,10 +58,10 @@ tabindex="-1"
 role="dialog"
 aria-labelledby="mySmallModalLabel"
 aria-hidden="true">
-<div class="modal-dialog modal-lg">
+<div class="modal-dialog modal-lg" *ngIf="selectedPokemonLoaded">
 <div class="modal-content">
     <div class="modal-header">
-       <h3 class="modal-title pull-left">Name</h3>
+       <h3 class="modal-title pull-left">{{pokeDetails.name}}</h3>
         <button type="button"
                      class="close"
                      aria-label="Close"
@@ -75,7 +76,7 @@ aria-hidden="true">
 
       <!-- Pokemon Image -->
       <div class="col-md-2">
-        <img class="rounded float-left img-thumbnail">
+        <img [src]="pokeDetails.image" class="rounded float-left img-thumbnail">
       </div>
 
           <!-- Pokemon Type -->
@@ -84,28 +85,28 @@ aria-hidden="true">
             <li class="list-group-item">
               <strong>Height</strong>
                <div class="d-flex justify-content-end">
-                <div class="mr-auto p-2">&nbsp; Height</div>
+                <div class="mr-auto p-2">&nbsp; {{pokeDetails.height}}</div>
               </div>
             </li>
             <li class="list-group-item">
               <strong>Weight</strong>
                <div class="d-flex justify-content-end">
-                <div class="mr-auto p-2">&nbsp; Weight</div>
+                <div class="mr-auto p-2">&nbsp; {{pokeDetails.weight}}</div>
               </div>
             </li>
             <li class="list-group-item">
               <strong>Type</strong>
               <ul>
-                <li>
-                <span class="align-self-end">Type</span>
+                <li *ngFor="let type of pokeDetails.type">
+                <span class="align-self-end">{{type}}</span>
                 </li>
               </ul>
             </li>
             <li class="list-group-item">
               <strong>Abilities</strong>
               <ul>
-                <li>
-                <span class="align-self-end">Abilities</span>
+                <li *ngFor="let abilities of pokeDetails.abilities">
+                <span class="align-self-end">{{abilities}}</span>
                 </li>
               </ul>
             </li>
@@ -119,7 +120,7 @@ aria-hidden="true">
               <strong>HP</strong>
               <div class="d-flex justify-content-end">
                 <div class="mr-auto p-2 float-right">
-                  <span class="badge badge-default">HP
+                  <span class="badge badge-default">{{pokeDetails.stats.hp}}
                 </span>
                </div>
               </div>
@@ -128,7 +129,7 @@ aria-hidden="true">
             <strong>Attack</strong>
               <div class="d-flex justify-content-end">
                 <div class="mr-auto p-2">
-                  <span class="badge badge-danger">Attack
+                  <span class="badge badge-danger">{{pokeDetails.stats.attack}}
                 </span>
                </div>
               </div>
@@ -137,7 +138,7 @@ aria-hidden="true">
               <strong>Defense</strong>
                 <div class="d-flex justify-content-end">
                 <div class="mr-auto p-2">
-                  <span class="badge badge-warning">Defense
+                  <span class="badge badge-warning">{{pokeDetails.stats.defense}}
                 </span>
                </div>
               </div>
@@ -146,7 +147,7 @@ aria-hidden="true">
               <strong>Special Attack</strong>
                 <div class="d-flex justify-content-end">
                 <div class="mr-auto p-2">
-                  <span class="badge badge-info">Attack
+                  <span class="badge badge-info">{{pokeDetails.stats['sp.atk']}}
                 </span>
                </div>
               </div>
@@ -155,7 +156,7 @@ aria-hidden="true">
               <strong>Special Defense</strong>
                 <div class="d-flex justify-content-end">
                 <div class="mr-auto p-2">
-                  <span class="badge badge-success">Defense
+                  <span class="badge badge-success">{{pokeDetails.stats['sp.def']}}
                 </span>
                </div>
               </div>
@@ -164,7 +165,7 @@ aria-hidden="true">
               <strong>Speed</strong>
                 <div class="d-flex justify-content-end">
                 <div class="mr-auto p-2">
-                  <span class="badge badge-primary">Speed
+                  <span class="badge badge-primary">{{pokeDetails.stats.speed}}
                 </span>
                </div>
               </div>
@@ -173,7 +174,7 @@ aria-hidden="true">
               <strong>Total</strong>
                 <div class="d-flex justify-content-end">
                 <div class="mr-auto p-2">
-                  <span class="badge badge-default">Total
+                  <span class="badge badge-default">{{pokeDetails.stats.total}}
                 </span>
                </div>
               </div>

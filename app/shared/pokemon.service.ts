@@ -20,6 +20,15 @@ export class PokemonService {
                .do(data => console.log(data))
                .catch(this.handleError);
   }
+
+  getPokemonDetails(id:number): Observable<Pokemon> {
+    let url = `${this.pokemonUrl}/${id}`;
+    return this._http
+               .get(url)
+               .map((res: Response) => <Pokemon> res.json().data) // Convert data we get to Pokemon
+               .do(data => console.log(data))
+               .catch(this.handleError);
+  }
   
   deletePokemon(pokemon: Pokemon): Observable<Response> {
     let headers = new Headers({'Content-Type': 'application/json'});
